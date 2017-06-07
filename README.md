@@ -1,6 +1,6 @@
-# y
+# admin
 
-> 友电后台管理
+> 后台管理
 
 ## Build Setup
 
