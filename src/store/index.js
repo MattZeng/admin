@@ -1,16 +1,17 @@
 /**
  * Created by zxh on 2017/6/6.
  */
-/**
- * Created by zxh on 2017/6/6.
- */
 import Vue from 'vue'
 import Vuex from 'vuex'
 import * as actions from './actions'
 import * as mutations from './mutations'
 import state from './modules/state'
+import terminalBattery from './modules/terminalBattery'
+import order from './modules/order'
+import withdraw from './modules/withdraw'
+import merchants from './modules/merchants'
 
-Vue.use(Vuex)
+Vue.use(Vuex);
 
 // const debug = process.env.NODE_ENV !== 'production';
 
@@ -18,7 +19,11 @@ export default new Vuex.Store({
   actions,
   mutations,
   modules: {
-    state
+    state,
+    terminalBattery,
+    order,
+    withdraw,
+    merchants
   },
   // strict: debug,
   // plugins: debug ? [createLogger()] : []

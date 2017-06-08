@@ -2,6 +2,8 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Hello from '@/components/Hello'
 import StateBase from '@/components/state/StateBase'
+import OrderManage from '@/components/order/OrderManage'
+import WithdrawManage from '@/components/withdraw/WithdrawManage'
 
 Vue.use(Router);
 
@@ -72,12 +74,12 @@ let R = new Router({
     {
       path: '/order-manage',
       name: 'orderManage',
-      component: Hello
+      component: OrderManage
     },
     {
       path: '/withdraw-manage',
       name: 'withdrawManage',
-      component: Hello
+      component: WithdrawManage
     },
 
   ]
