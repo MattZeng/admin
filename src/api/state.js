@@ -3,7 +3,7 @@
  */
 import axios from 'axios'
 
-const baseUrl = 'http://localhost:8080/server';
+const baseUrl = 'http://localhost:9091';
 const getStateBase = `${baseUrl}/getState`;
 
 export default {
