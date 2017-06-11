@@ -11,7 +11,7 @@
       </el-table-column>
       <el-table-column label="归还日期" sortable prop="return_date">
       </el-table-column>
-      <el-table-column prop="deposit_amount" label="保证金(元)" sortable></el-table-column>
+      <el-table-column prop="deposit_amount" label="租金(元)" sortable></el-table-column>
     </el-table>
   </div>
 </template>
@@ -26,13 +26,7 @@
       ...mapGetters({
         lease3day: 'lease3day',
         loading: 'loading'
-      }),
-      filterr(row,column) {
-        console.log("das");
-        console.log(row);
-        console.log(column);
-        //return 555;
-      }
+      })
     },
     data () {
       return {
