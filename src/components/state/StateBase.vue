@@ -1,7 +1,7 @@
 <template>
   <div id="">
     <h3>{{this.$route.meta.title}}</h3><el-button type="primary" :loading="loading" @click="reflesh">刷新</el-button>
-    <el-table :data="stateDate" border stripe style="width: 100%" :default-sort="{prop: 'device_id', order: 'ascending'}">
+    <el-table :data="stateData" border stripe style="width: 100%" :default-sort="{prop: 'device_id', order: 'ascending'}">
       <el-table-column prop="device_id" label="编号" sortable ></el-table-column>
       <el-table-column prop="name" label="网点"></el-table-column>
       <el-table-column prop="leaseCount" label="租借次数" sortable></el-table-column>
@@ -21,7 +21,7 @@
     name: 'StateBase',
     components: {},
     computed: mapGetters({
-      stateDate: 'stateDate',
+      stateData: 'stateData',
       loading: 'loading'
     }),
     data () {
@@ -29,13 +29,9 @@
         meta: {}
       }
     },
-    methods: Object.assign(mapActions([
-      'fetchData',
-      'reflesh'
-    ]),
-      {
-      }
-    ),
+    methods: {
+      ...mapActions(['fetchData', 'reflesh']),
+    },
     created () {
       this.$store.dispatch('fetchData');//action
       this.$store.commit('init', this.$route.meta);
@@ -45,7 +41,7 @@
       // 如果路由有变化，会再次执行该方法
       '$route' () {
         this.$store.commit('init', this.$route.meta);
-        this.stateDate.length || this.$store.dispatch('fetchData');
+        this.stateData.length || this.$store.dispatch('fetchData');
       }
     }
   }

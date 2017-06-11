@@ -4,6 +4,13 @@
 import axios from 'axios'
 import {baseUrl} from './apiConfig'
 
+
+const orderListUrl = `${baseUrl}/users/userInfo`
 export default {
-  findByAccount (){}
+  findByAccount (name){
+    return axios.get(orderListUrl,{params:{
+      phone: name,
+      time: new Date().getTime()
+    }})
+  }
 }

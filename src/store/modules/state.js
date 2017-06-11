@@ -4,7 +4,7 @@ const state = {
   today: [],
   month: [],
   accumulate: [],
-  active: '',
+  active: 'today',
   loading: false
 };
 
@@ -13,7 +13,7 @@ const getters = {
   month: state => state.month,
   accumulate: state => state.accumulate,
   loading: state => state.loading,
-  stateDate (state) {return state[state.active].map((item) =>{
+  stateData (state) {return state[state.active].map((item) =>{
     return Object.assign({}, {leaseCount: 0, android: 0, iphone: 0, typeC: 0, leaseIncome:0, itemIncome:0}, item);
   })}
 };

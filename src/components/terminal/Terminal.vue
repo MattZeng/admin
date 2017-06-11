@@ -6,7 +6,7 @@
 </template>
 
 <script type="text/javascript">
-  import {mapGetters, mapActions} from 'vuex'
+//  import {mapGetters, mapActions} from 'vuex'
 
   export default {
     name: 'Terminal',

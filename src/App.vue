@@ -27,6 +27,7 @@
     font-size: 100px;
     font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
     body{
+      font-size: .14rem;
       margin:0;
       padding:0;
     }
