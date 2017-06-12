@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Hello from '@/components/Hello'
 import StateBase from '@/components/state/StateBase'
+import StateLease3Day from '@/components/state/StateLease3Day'
 import OrderManage from '@/components/order/OrderManage'
 import WithdrawManage from '@/components/withdraw/WithdrawManage'
 
@@ -44,7 +45,7 @@ let R = new Router({
     {
       path: '/state-lease-3day',
       name: 'stateLease3Day',
-      component: Hello
+      component: StateLease3Day
     },
     {
       path: '/state-order',
