@@ -5,6 +5,8 @@ const state = {
   month: [],
   accumulate: [],
   lease3Day: [],
+  scanlogList: [],
+  orderList: [],
   active: 'today',
   loading: false
 };
@@ -18,6 +20,7 @@ const getters = {
     return Object.assign({}, {leaseCount: 0, android: 0, iphone: 0, typeC: 0, leaseIncome:0, itemIncome:0}, item);
   })},
   lease3day: (state) => {
+    //TODO: 不能改动state
     let dateFilter = (value) => {
       if (!value) {
         return null;
@@ -43,7 +46,10 @@ const getters = {
       }
     }
     return item;
-  })}
+  })},
+
+  scanlogList: state => state.scanlogList,
+  orderStatement: state => state.orderList
 };
 
 const actions = {
@@ -72,6 +78,22 @@ const actions = {
   },
   Lease3DayDataReflesh ({dispatch, commit}){
     dispatch('fetchLease3DayData');
+  },
+  //扫描统计
+  fatchScanlog({commit}, {start, end}){
+    stateApi.fatchScanlog({start, end}).then(function ({data}) {
+      commit('receivedData', {values: data.list, kind: 'scanlogList'})
+    }).catch(function (e) {
+      alert(e);
+    })
+  },
+  //订单统计
+  fatchOrderStatement({commit}, {start, end}){
+    stateApi.fatchOrderList({start, end}).then(function ({data}) {
+      commit('receivedData', {values: data.list, kind: 'orderList'})
+    }).catch(function (e) {
+      alert(e);
+    })
   }
 };
 

@@ -48,5 +48,8 @@
       margin: .1rem;
     }
   }
-
+  .right_btn{
+    margin: .2rem;
+    float: right;
+  }
 </style>

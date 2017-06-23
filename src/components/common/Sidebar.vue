@@ -8,6 +8,7 @@
           <el-menu-item index="state-today">今日新增</el-menu-item>
           <el-menu-item index="state-month">当月新增</el-menu-item>
           <el-menu-item index="state-accumulate">累计统计</el-menu-item>
+          <el-menu-item index="state-scan">扫描统计</el-menu-item>
         </el-menu-item-group>
         <el-menu-item-group>
           <template slot="title">订单统计</template>
@@ -23,7 +24,7 @@
       <el-submenu index="3">
         <template slot="title"><i class="el-icon-date"></i>商户管理</template>
         <el-menu-item index="merchants">商户信息</el-menu-item>
-        <el-menu-item index="merchants-terminal">机器关联</el-menu-item>
+        <!--<el-menu-item index="merchants-terminal">机器关联</el-menu-item>-->
       </el-submenu>
       <el-menu-item index="order-manage"><i class="el-icon-setting"></i>订单管理</el-menu-item>
       <el-menu-item index="withdraw-manage"><i class="el-icon-setting"></i>提现管理</el-menu-item>

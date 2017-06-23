@@ -1,6 +1,6 @@
 <template>
   <div id="">
-    <h3>{{this.$route.meta.title}}</h3><el-button type="primary" :loading="loading" @click="reflesh">刷新</el-button>
+    <h3>{{this.$route.meta.title}}</h3><el-button type="primary" :loading="loading" @click="reflesh" class="right_btn">刷新</el-button>
     <el-table :data="stateData" border stripe style="width: 100%" :default-sort="{prop: 'device_id', order: 'ascending'}">
       <el-table-column prop="device_id" label="编号" sortable ></el-table-column>
       <el-table-column prop="name" label="网点"></el-table-column>

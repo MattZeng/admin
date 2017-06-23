@@ -1,7 +1,6 @@
 <template>
-  <div id="">
-
-    <el-form :inline="true" :model="account" class="" @keyup.enter.native="search(account)">
+  <div>
+    <el-form :inline="true" :model="account" class="" @keyup.enter.native="search(account)" v-loading.fullscreen.lock="loading">
       <el-form-item label="账号:">
         <el-input v-model="account.name" placeholder="账号"></el-input>
       </el-form-item>
@@ -18,13 +17,13 @@
     </el-form>
     <el-table :data="orderList" border stripe style="width: 100%" :default-sort="{prop: ''}" >
       <el-table-column prop="uuid" label="订单编号"></el-table-column>
-      <el-table-column prop="date" label="日期" :formatter="formatterDate"></el-table-column>
+      <el-table-column prop="date" label="日期" :formatter="formatterDate" width="160" ></el-table-column>
       <el-table-column prop="terminal" label="网点"></el-table-column>
-      <el-table-column prop="android" label="安卓" :formatter="formatter"></el-table-column>
-      <el-table-column prop="iphone" label="苹果" :formatter="formatter"></el-table-column>
-      <el-table-column prop="typeC" label="type-c" :formatter="formatter"></el-table-column>
+      <el-table-column prop="android" label="安卓" :formatter="formatter" width="80"></el-table-column>
+      <el-table-column prop="iphone" label="苹果" :formatter="formatter" width="80"></el-table-column>
+      <el-table-column prop="typeC" label="type-c" :formatter="formatter" width="80"></el-table-column>
       <el-table-column label="电池租借" align="center">
-        <el-table-column label="状态" align="center">
+        <el-table-column label="状态" align="center" width="80">
           <template scope="scope">
             <div v-if="scope.row.leaseState==='LEASING'">
               <el-tag type="warning">租借中</el-tag>
@@ -35,10 +34,10 @@
             <div v-else>-</div>
           </template>
         </el-table-column>
-        <el-table-column prop="returnDate" label="归还时间" :formatter="formatterDate"></el-table-column>
-        <el-table-column prop="battery" label="租金" :formatter="formatter"></el-table-column>
+        <el-table-column prop="returnDate" label="归还时间" :formatter="formatterDate" width="160"></el-table-column>
+        <el-table-column prop="battery" label="租金" :formatter="formatter" width="80"></el-table-column>
       </el-table-column>
-      <el-table-column label="处理" align="center">
+      <el-table-column label="处理" align="center" width="80">
         <template scope="scope">
           <el-button
             size="small"
@@ -49,14 +48,14 @@
     <el-dialog title="处理订单" v-model="handleOrder.visible" :size="'tiny'">
       <el-form :model="handleOrder">
         <div v-if="handleOrder.order.leaseState">
-          <el-form-item label="租借时间" :label-width="'1rem'">
+          <el-form-item label="租借时间" :label-width="'.8rem'">
             <el-date-picker
               v-model="handleLeaseDate"
               type="datetime"
               readonly>
             </el-date-picker>
           </el-form-item>
-          <el-form-item label="归还时间" :label-width="'1rem'">
+          <el-form-item label="归还时间" :label-width="'.8rem'">
             <el-date-picker
               v-model="handleOrder.orderToPost.returnDate"
               type="datetime"
@@ -65,13 +64,13 @@
               v-on:change="changeReturnDate">
             </el-date-picker>
           </el-form-item>
-          <el-form-item label="租金" :label-width="'1rem'">
+          <el-form-item label="租金" :label-width="'.8rem'">
             <el-input v-model="handleOrder.orderToPost.rent" placeholder="" style="width:193px"></el-input>
             <el-button type="primary" @click.prevent="returnBattery(handleOrder.orderToPost)">归还</el-button>
           </el-form-item>
         </div>
         <div v-if="handleOrder.order.iphone !== null || handleOrder.order.android !== null || handleOrder.order.typeC !== null">
-          <el-form-item label="数据线" :label-width="'1rem'">
+          <el-form-item label="数据线" :label-width="'.6rem'">
             <el-input v-model="handleLineStr" placeholder="" style="width:193px" :disabled="true"></el-input>
             <el-button
               type="primary"
@@ -111,7 +110,8 @@
     },
     computed: {
       ...mapGetters({
-        orderList: 'orderList'
+        orderList: 'orderList',
+        loading: 'orderManageLoading'
       }),
       handleLeaseDate(){
         return new Date(this.handleOrder.order.leaseDate)
@@ -119,11 +119,11 @@
       handleLineStr(){
         const order = this.handleOrder.order;
         if (order.iphone !== null) {
-          return `Iphone线——${order.iphone}元`
+          return `Iphone线${order.iphone}元`
         } else if (order.android !== null) {
-          return `Android线——${order.android}元`
+          return `Android线${order.android}元`
         } else if (order.typeC !== null) {
-          return `TypeC线——${order.typeC}元`
+          return `TypeC线${order.typeC}元`
         }
         return '无';
       },

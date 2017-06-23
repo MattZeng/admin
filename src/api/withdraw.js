@@ -3,7 +3,12 @@
  */
 import axios from 'axios'
 import {baseUrl} from './apiConfig'
+import qs from 'qs'
+
+const withdrawPaymentUrl = `${baseUrl}/users/withdrawPayment`;
 
 export default {
-  findByAccount (){}
+  findByAccount (name){
+    return axios.get(withdrawPaymentUrl,{params:{account: name}})
+  }
 }

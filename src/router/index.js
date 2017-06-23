@@ -2,9 +2,13 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Hello from '@/components/Hello'
 import StateBase from '@/components/state/StateBase'
+import ScanStatement from '@/components/state/ScanStatement'
 import StateLease3Day from '@/components/state/StateLease3Day'
+import OrderStatement from '@/components/state/OrderStatement'
 import OrderManage from '@/components/order/OrderManage'
 import WithdrawManage from '@/components/withdraw/WithdrawManage'
+import Terminal from '@/components/terminal/Terminal'
+import MechantsManage from '@/components/merchants/MerchantsManage'
 
 Vue.use(Router);
 
@@ -43,19 +47,27 @@ let R = new Router({
       }
     },
     {
+      path: '/state-scan',
+      name: 'stateScan',
+      component: ScanStatement,
+    },
+    {
+      //TODO: 组件有问题
       path: '/state-lease-3day',
       name: 'stateLease3Day',
+      // component: Hello
+
       component: StateLease3Day
     },
     {
       path: '/state-order',
       name: 'stateOrder',
-      component: Hello
+      component: OrderStatement
     },
     {
       path: '/terminal',
       name: 'terminal',
-      component: Hello
+      component: Terminal
     },
     {
       path: '/terminal-ad',
@@ -65,7 +77,7 @@ let R = new Router({
     {
       path: '/merchants',
       name: 'merchants',
-      component: Hello
+      component: MechantsManage
     },
     {
       path: '/merchants-terminal',
