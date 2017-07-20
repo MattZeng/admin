@@ -9,6 +9,6 @@ const withdrawPaymentUrl = `${baseUrl}/users/withdrawPayment`;
 
 export default {
   findByAccount (name){
-    return axios.get(withdrawPaymentUrl,{params:{account: name}})
+    return axios.get(withdrawPaymentUrl,{params:{account: name, v:new Date().getTime()}})
   }
 }

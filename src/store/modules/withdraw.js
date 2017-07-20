@@ -6,26 +6,28 @@ import  api from '@/api/withdraw'
 const state = {
   withdrawList: [],
   paymentList: [],
-  withdrawPaymentList: []
+  // withdrawPaymentList: []
 };
 
 const getters = {
+  withdrawList: state => state.withdrawList,
+  paymentList: state => state.paymentList
 };
 
 const actions = {
   searchWithdraw ({commit, dispacth, state}, {name}){
     api.findByAccount(name).then(function ({data}) {
-      console.log(data);
       commit('receivedWithdrawList', data)
     }).catch(function (e) {
       alert(e)
-    })
+    });
   }
 };
 
 const mutations = {
   receivedWithdrawList(state, data){
-    console.log(data)
+    state.withdrawList = data.withdraw;
+    state.paymentList = data.payment;
   }
 };
 

@@ -74,6 +74,7 @@
       title=""
       v-model="terminalDetail.visible" :size="'large'"
       :close-on-click-modal="false"
+      :close-on-press-escape="false"
       :show-close="false">
       <h3>{{terminalDetail.merchant.name}}</h3>
       <el-row :gutter="20">
@@ -269,7 +270,6 @@
           alert(e);
         });
         console.log(deviceIds)
-
       }
     },
     created (){

@@ -7,6 +7,7 @@ import * as actions from './actions'
 import * as mutations from './mutations'
 import state from './modules/state'
 import terminalBattery from './modules/terminalBattery'
+import terminalAd from './modules/terminalAd'
 import order from './modules/order'
 import withdraw from './modules/withdraw'
 import merchants from './modules/merchants'
@@ -21,6 +22,7 @@ export default new Vuex.Store({
   modules: {
     state,
     terminalBattery,
+    terminalAd,
     order,
     withdraw,
     merchants

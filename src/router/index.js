@@ -8,6 +8,7 @@ import OrderStatement from '@/components/state/OrderStatement'
 import OrderManage from '@/components/order/OrderManage'
 import WithdrawManage from '@/components/withdraw/WithdrawManage'
 import Terminal from '@/components/terminal/Terminal'
+import TerminalAd from '@/components/terminal/TerminalAd'
 import MechantsManage from '@/components/merchants/MerchantsManage'
 
 Vue.use(Router);
@@ -72,7 +73,7 @@ let R = new Router({
     {
       path: '/terminal-ad',
       name: 'terminalAd',
-      component: Hello
+      component: TerminalAd
     },
     {
       path: '/merchants',
