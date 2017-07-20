@@ -1,15 +1,32 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Hello from '@/components/Hello'
-import StateBase from '@/components/state/StateBase'
-import ScanStatement from '@/components/state/ScanStatement'
-import StateLease3Day from '@/components/state/StateLease3Day'
-import OrderStatement from '@/components/state/OrderStatement'
-import OrderManage from '@/components/order/OrderManage'
-import WithdrawManage from '@/components/withdraw/WithdrawManage'
-import Terminal from '@/components/terminal/Terminal'
-import TerminalAd from '@/components/terminal/TerminalAd'
-import MechantsManage from '@/components/merchants/MerchantsManage'
+// import Hello from '@/components/Hello'
+// import StateBase from '@/components/state/StateBase'
+// import ScanStatement from '@/components/state/ScanStatement'
+// import StateLease3Day from '@/components/state/StateLease3Day'
+// import OrderStatement from '@/components/state/OrderStatement'
+// import OrderManage from '@/components/order/OrderManage'
+// import WithdrawManage from '@/components/withdraw/WithdrawManage'
+// import Terminal from '@/components/terminal/Terminal'
+// import TerminalAd from '@/components/terminal/TerminalAd'
+// import MechantsManage from '@/components/merchants/MerchantsManage'
+const Hello = resolve => {
+  // require.ensure 是 Webpack 的特殊语法，用来设置 code-split point
+  // （代码分块）
+  require.ensure(['@/components/Hello'], () => {
+    resolve(require('@/components/Hello'))
+  })
+}
+const StateBase = r => { require.ensure(['@/components/state/StateBase'], () => { r( require('@/components/state/StateBase'))})}
+const ScanStatement = r => { require.ensure(['@/components/state/ScanStatement'], () => { r( require('@/components/state/ScanStatement'))})}
+const StateLease3Day = r => { require.ensure(['@/components/state/StateLease3Day'], () => { r( require('@/components/state/StateLease3Day'))})}
+const OrderStatement = r => { require.ensure(['@/components/state/OrderStatement'], () => { r( require('@/components/state/OrderStatement'))})}
+const OrderManage = r => { require.ensure(['@/components/order/OrderManage'], () => { r( require('@/components/order/OrderManage'))})}
+const WithdrawManage = r => { require.ensure(['@/components/withdraw/WithdrawManage'], () => { r( require('@/components/withdraw/WithdrawManage'))})}
+const Terminal = r => { require.ensure(['@/components/terminal/Terminal'], () => { r( require('@/components/terminal/Terminal'))})}
+const TerminalAd = r => { require.ensure(['@/components/terminal/TerminalAd'], () => { r( require('@/components/terminal/TerminalAd'))})}
+const MechantsManage = r => { require.ensure(['@/components/merchants/MerchantsManage'], () => { r( require('@/components/merchants/MerchantsManage'))})}
+
 
 Vue.use(Router);
 
