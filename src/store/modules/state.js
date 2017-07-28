@@ -20,7 +20,6 @@ const getters = {
     return Object.assign({}, {leaseCount: 0, android: 0, iphone: 0, typeC: 0, leaseIncome:0, itemIncome:0}, item);
   })},
   lease3day: (state) => {
-    //TODO: 不能改动state
     let dateFilter = (value) => {
       if (!value) {
         return null;
@@ -38,14 +37,15 @@ const getters = {
       }
     }
     return state['lease3Day'].map((item) =>{
-    for(let i in item){
-      if(i == 'date' || i == 'return_date'){
-        item[i] = dateFilter(item[i])
-      }else if(i == 'state'){
-        item[i] = stateFilter(item[i])
+      item = Object.assign({}, item);
+      for(let i in item){
+        if(i == 'date' || i == 'return_date'){
+          item[i] = dateFilter(item[i])
+        }else if(i == 'state'){
+          item[i] = stateFilter(item[i])
+        }
       }
-    }
-    return item;
+      return item;
   })},
 
   scanlogList: state => state.scanlogList,

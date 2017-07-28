@@ -27,6 +27,6 @@ export default new Vuex.Store({
     withdraw,
     merchants
   },
-  // strict: process.env.NODE_ENV !== 'production'
+  strict: process.env.NODE_ENV !== 'production'
   // plugins: debug ? [createLogger()] : []
 })
